@@ -3,10 +3,10 @@
 <head th:replace="~{fragments/bootstrap :: head}"></head>
 <body>
     <div th:replace="~{fragments/barraDeNavegacion :: nav}"></div>
-    <div>
+    <div style="margin:15px;">
         <h1 th:text="${noticia.titulo}">Título</h1>
         <p th:text="${noticia.fechaPublicacion}">Fecha publicación</p>
-        <p th:utext="${noticia.cuerpo}">Cuerpo</p>
+        <p th:utext="${noticia.cuerpo}" style="width:800px">Cuerpo</p>
     </div>
 </body>
 </html>
