@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="~{fragments/bootstrap :: head}"></head>
+<body>
+    <div th:replace="~{fragments/barraDeNavegacion :: nav}"></div>
+    <div>
+        <h1 th:text="${noticia.titulo}">Título</h1>
+        <p th:text="${noticia.fechaPublicacion}">Fecha publicación</p>
+        <p th:utext="${noticia.cuerpo}">Cuerpo</p>
+    </div>
+</body>
+</html>

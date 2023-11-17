@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/bootstrap :: head}"></head>
+<body class="bg-dark">
+
+    <div class="position-absolute top-50 start-50 translate-middle" style="text-align: center;">
+        <h1 class="text-white">Error en la aplicación</h1>
+        <p class="text-white">Lo sentimos, ha ocurrido un error en la aplicación.</p>
+        <img th:src="@{/imagenes/404.gif}" alt="404">
+        <br><br>
+        <a th:href="@{/}" class="btn btn-info">Volver al home</a>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="~{fragments/bootstrap :: head}"></head>
+<body>
+    <div th:replace="~{fragments/barraDeNavegacion :: nav}"></div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-10 offset-1">
+                <form class="form" th:action="@{/panel/guardar}" method="post">
+                    <div class="mb-3">
+                        <label for="titulo" class="form-label">Título de la noticia</label>
+                        <input type="text" class="form-control" name="titulo" id="titulo" th:value="${id} ? ${noticia.titulo} : ''">
+                    </div>
+                    <div class="mb-3">
+                        <label for="cuerpo" class="form-label">La noticia</label>
+                        <textarea class="form-control" name="cuerpo" rows="15" id="cuerpo" th:text="${id} ? ${noticia.cuerpo} : ''"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="fechaPublicacion" class="form-date">Fecha de publicación</label>
+                        <input type="date" name="fechaPublicacion" id="fechaPublicacion" th:value="${id} ? ${noticia.fechaPublicacion} : ''">
+                    </div>
+                    <input type="hidden" name="id" th:if="${id}" th:value="${id}">
+                    <div class="d-grid gap-2">
+                        <input type="submit" class="btn btn-success" th:value="${id} ? 'Editar' : 'Crear'">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
