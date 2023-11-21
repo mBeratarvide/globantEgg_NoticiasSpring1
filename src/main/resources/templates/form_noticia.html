@@ -21,6 +21,9 @@
                         <input type="date" name="fechaPublicacion" id="fechaPublicacion" th:value="${id} ? ${noticia.fechaPublicacion} : ''">
                     </div>
                     <input type="hidden" name="id" th:if="${id}" th:value="${id}">
+                    <label for="activo" th:if="${id}">
+                        <input type="checkbox" name="activo" id="activo" th:checked="${noticia.activa}"> Activa?
+                    </label>
                     <div class="d-grid gap-2">
                         <input type="submit" class="btn btn-success" th:value="${id} ? 'Editar' : 'Crear'">
                     </div>

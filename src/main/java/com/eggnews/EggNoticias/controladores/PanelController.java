@@ -32,6 +32,7 @@ public class PanelController {
             @RequestParam String titulo,
             @RequestParam String cuerpo,
             @RequestParam String fechaPublicacion,
+            @RequestParam(required = false) boolean activo,
             ModelMap mm) {
         try {
             if(id == null) {
@@ -39,7 +40,7 @@ public class PanelController {
                 noticiaServicio.nuevaNoticia(titulo, cuerpo, fechaPublicacion);
                 mm.addAttribute("exito", "La noticia fue asimilada :| ");
             } else {
-                noticiaServicio.modificarNoticia(id, titulo, cuerpo, fechaPublicacion);
+                noticiaServicio.modificarNoticia(id, titulo, cuerpo, fechaPublicacion, activo);
                 mm.addAttribute("exito", "La noticia fue editada correctamente.");
             }
         }

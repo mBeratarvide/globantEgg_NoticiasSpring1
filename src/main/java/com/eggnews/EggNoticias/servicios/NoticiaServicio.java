@@ -29,11 +29,11 @@ public class NoticiaServicio {
     }
 
     public Noticia obtenerNoticiaPorId(int id) {
-        Optional<Noticia> hayNoticia = noticiaRepositorio.findById(id);
+        Optional<Noticia> hayNoticia = noticiaRepositorio.findByIdAndActivaTrue(id);
         return hayNoticia.orElse(null);
     }
 
-    public Noticia obtenerNoticiaPorTitulo(String titulo) {
+    public List<Noticia> obtenerNoticiaPorTitulo(String titulo) {
         return noticiaRepositorio.getNoticiaPorTitulo(titulo);
     }
 
@@ -46,7 +46,7 @@ public class NoticiaServicio {
     }
 
     @Transactional
-    public void modificarNoticia(int id, String titulo, String cuerpo, String fecha) {
+    public void modificarNoticia(int id, String titulo, String cuerpo, String fecha, boolean activo) {
         Optional<Noticia> hayNoticia = noticiaRepositorio.findById(id);
 
         if(hayNoticia.isPresent()) {
@@ -55,6 +55,7 @@ public class NoticiaServicio {
             n.setTitulo(titulo);
             n.setCuerpo(cuerpo);
             n.setFechaPublicacion(convertirFecha(fecha));
+            n.setActiva(activo);
 
             noticiaRepositorio.save(n);
         }
