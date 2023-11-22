@@ -6,7 +6,7 @@
 
         <h1>Panel de control de las noticias</h1>
 
-        <table class="table table-striped table-dark table-hover">
+        <table class="table table-striped table-dark table-hover" style="text-align:center;">
             <thead>
                 <tr>
                     <th>#</th>
@@ -21,12 +21,22 @@
                     <td th:text="${noticia.titulo}"></td>
                     <td><a th:href="@{/panel/noticia/{id}(id=${noticia.idNoticia})}">Editar</a></td>
                     <td>
-                        <label for="activo">
-                            <input type="checkbox" name="activo" id="activo" th:checked="${noticia.activa}" disabled>
-                        </label>
+                        <form th:action="@{/panel/desActivar/{id}(id=${noticia.idNoticia})}" method="post">
+                            <input type="hidden" name="id" th:value="${noticia.idNoticia}">
+                            <label for="activo">
+                                <input type="checkbox" name="activo" id="activo" th:checked="${noticia.activa}" th:attr="onclick=|enviar(${noticia.idNoticia})|">
+                            </label>
+                            <button type="submit" th:id="${noticia.idNoticia}" style="display: none;">Enviar</button>
+                        </form>
                     </td>
                 </tr>
             </tbody>
         </table>
+        <script>
+            function enviar(submitId){
+              let botonSubmit = document.getElementById(submitId);
+              botonSubmit.click();
+            }
+        </script>
     </body>
 </html>

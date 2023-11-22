@@ -51,9 +51,15 @@ public class PanelController {
         return "redirect:/";
     }
 
+    @PostMapping("/desActivar/{id}")
+    public String toggleActivo(@PathVariable int id, ModelMap mm) {
+        System.out.println("---> toggle activo -> id : " + id);
+        noticiaServicio.alternarEstadoActivo(id);
+        return "redirect:/panel";
+    }
+
     @GetMapping("/noticia/{id}")
     public String editarNoticia(@PathVariable int id, ModelMap mm) {
-        System.out.println("---> id noticia " + id);
         mm.addAttribute("noticia", noticiaServicio.obtenerNoticiaPorId(id));
         mm.addAttribute("id", id);
         return "form_noticia";
